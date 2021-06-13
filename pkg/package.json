@@ -1,0 +1,15 @@
+{
+  "name": "portfolio_website",
+  "collaborators": [
+    "SuKiN-a <suryakiranpradosh@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "portfolio_website_bg.wasm",
+    "portfolio_website.js",
+    "portfolio_website.d.ts"
+  ],
+  "module": "portfolio_website.js",
+  "types": "portfolio_website.d.ts",
+  "sideEffects": false
+}
