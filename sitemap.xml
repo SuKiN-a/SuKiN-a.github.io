@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://sukin-a.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://sukin-a.github.io/about/</loc>
+    </url>
+    <url>
+        <loc>https://sukin-a.github.io/contact/</loc>
+    </url>
+    <url>
+        <loc>https://sukin-a.github.io/druid-live-reload/</loc>
+        <lastmod>2021-12-11</lastmod>
+    </url>
+    <url>
+        <loc>https://sukin-a.github.io/page/1/</loc>
+    </url>
+</urlset>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title></title>
+	<link href="https://sukin-a.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://sukin-a.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-12-11T00:00:00+00:00</updated>
+	<id>https://sukin-a.github.io/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Adding Live Reload To Druid</title>
+		<published>2021-12-11T00:00:00+00:00</published>
+		<updated>2021-12-11T00:00:00+00:00</updated>
+		<link href="https://sukin-a.github.io/druid-live-reload/" type="text/html"/>
+		<id>https://sukin-a.github.io/druid-live-reload/</id>
+		<content type="html">&lt;h1 id=&quot;motive&quot;&gt;Motive&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;linebender&#x2F;druid&quot;&gt;Druid&lt;&#x2F;a&gt; is a rust native GUI toolkit which I was trying to make an app in. A major pain point for me was the long compile times, a single line change would take over a minute to compile, while switching my linker to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rui314&#x2F;mold&quot;&gt;mold&lt;&#x2F;a&gt; helped somewhat, it still lacked the tight feedback loop I needed. So I decided to make an interpreted domain specific language which could do simple mockups of apps which I could then rewrite in rust. I don&#x27;t know if this is a conventional way to achieve this, but this is what I thought of first!.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;design&quot;&gt;Design&lt;&#x2F;h1&gt;
+&lt;p&gt;The initial syntax was modeled after HTML, however, the syntax felt too distracting for me. So I opted for a simpler language.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;go&quot; style=&quot;background-color:#31333d;color:#ffffffc4;&quot; class=&quot;language-go &quot;&gt;&lt;code class=&quot;language-go&quot; data-lang=&quot;go&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;row &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;button &lt;&#x2F;span&gt;&lt;span&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#dbbb3d;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#dbbb3d;&quot;&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;label &lt;&#x2F;span&gt;&lt;span&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#dbbb3d;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;Hello&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#dbbb3d;&quot;&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;button &lt;&#x2F;span&gt;&lt;span&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#dbbb3d;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#dbbb3d;&quot;&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;} { &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;centre &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;It uses a simple readable syntax with this rough format&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;go&quot; style=&quot;background-color:#31333d;color:#ffffffc4;&quot; class=&quot;language-go &quot;&gt;&lt;code class=&quot;language-go&quot; data-lang=&quot;go&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;widget_name &lt;&#x2F;span&gt;&lt;span&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;arguments &lt;&#x2F;span&gt;&lt;span&gt;} { &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a3cbe3;&quot;&gt;options &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The language is then interpreted and whenever the source file is changed, the main widget is updated, leading to only a subsecond gap between saving code and seeing it reflected in the app!&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;current-state&quot;&gt;Current State&lt;&#x2F;h1&gt;
+&lt;p&gt;The entire system is currently a bodge, everything &lt;em&gt;works&lt;&#x2F;em&gt; but not very well, and the code is definitely not good enough to be made public. the parser is currently built with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lalrpop&#x2F;lalrpop&quot;&gt;LALRPOP&lt;&#x2F;a&gt; and I am using its built-in lexer, but it has been annoying for me to deal with. So I plan to switch to a lexer built with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;maciejhirsz&#x2F;logos&quot;&gt;logos&lt;&#x2F;a&gt; soon.
+The &amp;quot;Interpreter&amp;quot; is very much not workable, so it will also have to be rewritten. I have not been able to work on this project for quite a while because of school, however I plan to restart work on it in the near future.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;Thanks for reading!&lt;&#x2F;strong&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

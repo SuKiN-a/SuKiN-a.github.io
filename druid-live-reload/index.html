@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Adding Live Reload To Druid - parx</title>
+    
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content=""/>
+
+    <meta property="og:title" content=" -&nbsp;Adding Live Reload To Druid" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https:&#x2F;&#x2F;sukin-a.github.io&#x2F;druid-live-reload&#x2F;"/>
+    <meta property="og:description" content=""/>
+    <link rel="preload" href="https://sukin-a.github.io/assets/fonts/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://sukin-a.github.io/assets/fonts/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://sukin-a.github.io/style.css?h=e41a1dfad61132bf9c9b951051fd04d0ef6427ab6b64efe0bbf1175cbc3f6f3e">
+    <link rel="stylesheet" href="https://sukin-a.github.io/color/pink.css?h=e55447b8ebf98decdf0d6b454a09ea690915f83e728267dbfcf93f1a5640c274">
+<link rel="alternate" type="application/atom+xml" title=" RSS" href="https://sukin-a.github.io/atom.xml"></head>
+    <body>
+        <div class="container full">
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <a href="https:&#x2F;&#x2F;sukin-a.github.io">
+    <div class="logo">
+        sukin&#x27;s blog
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger">menu</div>
+    </div>
+    
+    <nav class="menu">
+        <ul class="menu__inner menu__inner--desktop">
+            
+            <ul class="menu__sub-inner">
+                        <li class="menu__sub-inner-more-trigger">show more ▾</li>
+                        <ul class="menu__sub-inner-more hidden">
+                            
+        <li>
+            <a href="
+    
+        https://sukin-a.github.io/about
+    
+">About</a>
+        </li>
+        <li>
+            <a href="
+    
+        https://sukin-a.github.io/contact
+    
+">Contact</a>
+        </li>
+                        </ul>
+                    </ul>
+            </ul>
+
+        <ul class="menu__inner menu__inner--mobile">
+            
+        <li>
+            <a href="
+    
+        https://sukin-a.github.io/about
+    
+">About</a>
+        </li>
+        <li>
+            <a href="
+    
+        https://sukin-a.github.io/contact
+    
+">Contact</a>
+        </li>
+        </ul>
+    </nav>
+
+    </header>
+<div class="content"><article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https:&#x2F;&#x2F;sukin-a.github.io&#x2F;druid-live-reload&#x2F;">Adding Live Reload To Druid</a>
+            </h1>
+            
+    <div class="post-meta">
+        <span class="post-date">2021.12.11
+                </span>
+
+        <span class="post-author"></span>
+
+        
+
+    
+    </div>
+
+        </header><h1 id="motive">Motive</h1>
+<p><a href="https://github.com/linebender/druid">Druid</a> is a rust native GUI toolkit which I was trying to make an app in. A major pain point for me was the long compile times, a single line change would take over a minute to compile, while switching my linker to <a href="https://github.com/rui314/mold">mold</a> helped somewhat, it still lacked the tight feedback loop I needed. So I decided to make an interpreted domain specific language which could do simple mockups of apps which I could then rewrite in rust. I don't know if this is a conventional way to achieve this, but this is what I thought of first!.</p>
+<h1 id="design">Design</h1>
+<p>The initial syntax was modeled after HTML, however, the syntax felt too distracting for me. So I opted for a simpler language.</p>
+<pre data-lang="go" style="background-color:#31333d;color:#ffffffc4;" class="language-go "><code class="language-go" data-lang="go"><span style="font-weight:bold;color:#a3cbe3;">row </span><span>{
+</span><span>    </span><span style="font-weight:bold;color:#a3cbe3;">button </span><span>{ </span><span style="font-weight:bold;color:#dbbb3d;">&quot;</span><span>+</span><span style="font-weight:bold;color:#dbbb3d;">&quot; </span><span>}
+</span><span>    </span><span style="font-weight:bold;color:#a3cbe3;">label </span><span>{ </span><span style="font-weight:bold;color:#dbbb3d;">&quot;</span><span>Hello</span><span style="font-weight:bold;color:#dbbb3d;">&quot; </span><span>}
+</span><span>    </span><span style="font-weight:bold;color:#a3cbe3;">button </span><span>{ </span><span style="font-weight:bold;color:#dbbb3d;">&quot;</span><span>-</span><span style="font-weight:bold;color:#dbbb3d;">&quot; </span><span>}
+</span><span>} { </span><span style="font-weight:bold;color:#a3cbe3;">centre </span><span>}
+</span></code></pre>
+<p>It uses a simple readable syntax with this rough format</p>
+<pre data-lang="go" style="background-color:#31333d;color:#ffffffc4;" class="language-go "><code class="language-go" data-lang="go"><span style="font-weight:bold;color:#a3cbe3;">widget_name </span><span>{ </span><span style="font-weight:bold;color:#a3cbe3;">arguments </span><span>} { </span><span style="font-weight:bold;color:#a3cbe3;">options </span><span>}
+</span></code></pre>
+<p>The language is then interpreted and whenever the source file is changed, the main widget is updated, leading to only a subsecond gap between saving code and seeing it reflected in the app!</p>
+<h1 id="current-state">Current State</h1>
+<p>The entire system is currently a bodge, everything <em>works</em> but not very well, and the code is definitely not good enough to be made public. the parser is currently built with <a href="https://github.com/lalrpop/lalrpop">LALRPOP</a> and I am using its built-in lexer, but it has been annoying for me to deal with. So I plan to switch to a lexer built with <a href="https://github.com/maciejhirsz/logos">logos</a> soon.
+The &quot;Interpreter&quot; is very much not workable, so it will also have to be rewritten. I have not been able to work on this project for quite a while because of school, however I plan to restart work on it in the near future.</p>
+<p><strong><strong>Thanks for reading!</strong></strong></p>
+
+
+        
+    
+
+        
+        
+    </article></div>
+    <div class="pagination">
+        <div class="pagination__buttons">
+            </div>
+    </div>
+<footer class="footer">
+                    <div class="footer__inner"><div class="copyright copyright--user"> </div>
+    <script type="text/javascript" src="https://sukin-a.github.io/assets/js/main.js"></script>
+</div>
+                    
+
+                </footer></div>
+    </body>
+</html>
