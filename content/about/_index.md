@@ -5,4 +5,4 @@ path = "about"
 date = 2021-11-14
 +++
 
-Hey there!, I'm sukin(i also go by parxevicj sometimes), I'm a student with a passion for low level programming.
+Hey there!, I'm parxevicj(sometimes), I like programming. I'm mostly a lurker on the internet, but I do open source some of my code occasionally.

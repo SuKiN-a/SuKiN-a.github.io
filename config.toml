@@ -1,6 +1,6 @@
 theme = "zerm"
 # The URL the site will be built for
-base_url = "https://sukin-a.github.io"
+base_url = "https://blog.parxevicj.dev"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -22,7 +22,7 @@ highlight_theme = "agola-dark"
 # ---------------------------------------------------------
 
 # Author name to be added to posts, if enabled.
-author = "parx"
+author = "parxevicj"
 
 # Show author's name in blog post meta data.
 show_author = false
@@ -59,14 +59,14 @@ center = true
 # copyright = "Powered by Zola :: Theme made by ejmg"
 copyright = " "
 # What is displayed in the top left corner of the website. Default is zerm.
-logo_text = "sukin's blog"
+logo_text = "My place on the internet"
 
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
-    {url="/about/", name="About"},
-    {url="/contact/", name="Contact"},
-#    {url="/blog/", name="Blog"},
+    { url = "/about/", name = "About" },
+    { url = "/contact/", name = "Contact" },
+    #    {url="/blog/", name="Blog"},
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
