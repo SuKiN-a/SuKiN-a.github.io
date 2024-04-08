@@ -57,7 +57,7 @@ center = true
 
 # Copyright notice if desired. Defaults to
 # copyright = "Powered by Zola :: Theme made by ejmg"
-copyright = "Written with ❤️ and Zola :: Theme made by ejmg"
+copyright = "Written with ❤️ and Zola :: https://github.com/suKiN-a/suKiN-a.github.io :: Theme made by ejmg"
 # What is displayed in the top left corner of the website. Default is zerm.
 logo_text = "My place on the internet"
 
