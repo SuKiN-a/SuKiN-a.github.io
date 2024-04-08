@@ -17,3 +17,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PAGES_BRANCH: gh-pages
+    - run: echo "blog.parxevicj.dev" > CNAME
