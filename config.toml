@@ -29,7 +29,7 @@ show_post_edit_button = false
 #copyright = ""
 date_format = "%d-%m-%Y"
 navigation = [
-    { url = "tags", title = "Tags" },
+    { url = "$BASE_URL/tags", title = "Tags" },
     { url = "$BASE_URL/about", title = "Archive" },
     { url = "$BASE_URL/contact", title = "Content" },
 ]
