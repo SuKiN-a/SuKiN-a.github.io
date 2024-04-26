@@ -1,38 +1,28 @@
-theme = "papermod"
+theme = "tabi"
+title = "My place on the internet"
 base_url = "https://www.parxevicj.dev"
 
 compile_sass = true
 default_language = "en"
 generate_feed = true
-build_search_index = false
+build_search_index = true
+
+[extra]
+favicon = "favicon.ico"
+socials = [
+    { name = "github", url = "https://github.com/sukin-a/", icon = "github" },
+    { name = "steam", url = "https://steamcommunity.com/id/parxevicj", icon = "steam" },
+    { name = "mastodon", url = "https://social.vivaldi.net/@sukin", icon = "mastodon" },
+]
+menu = [{ name = "about", url = "about", trailing_slash = true }]
 
 [markdown]
 highlight_code = true
-highlight_theme = "agola-dark"
+highlight_theme = "css"
 
-[extra.papermod]
-title = "My place on the internet"
-default_theme = "auto"
-theme = "light"
-language_direction = "auto"
-keywords = ["Dev blog: Software engineering - 1", "keyword2", "keyword3"]
-show_theme_toggle = true
-show_scroll_to_top = true
-show_code_copy_buttons = true
-show_reading_time = true
-show_word_count = true
-show_post_nav_links = false
-show_post_meta = true
-default_toc_open = false
-show_post_edit_button = false
-#edit_post_url = ""
-#copyright = ""
-date_format = "%d-%m-%Y"
-navigation = [
-    { url = "$BASE_URL/tags", title = "Tags" },
-    { url = "$BASE_URL/about", title = "Archive" },
-    { url = "$BASE_URL/contact", title = "Content" },
-]
-home_title = ""
-home_content = ""
-social_icons = []
+[search]
+index_format = "elasticlunr_json"
+include_title = true
+include_description = true
+include_path = true
+include_content = true
