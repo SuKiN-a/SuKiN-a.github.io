@@ -1,3 +1,6 @@
 [submodule "themes/papermod"]
 	path = themes/papermod
 	url = https://github.com/cydave/zola-theme-papermod
+[submodule "themes/tabi"]
+	path = themes/tabi
+	url = https://github.com/welpo/tabi.git
