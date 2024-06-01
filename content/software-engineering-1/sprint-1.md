@@ -1,6 +1,5 @@
 +++
-title = "Sprint 1 and pre-sprint planning"
-date = 2024-04-11
+title = "sprint 1 and pre-sprint planning"
 authors = ["Suryakiran, student number: 2312154"]
 +++
 
@@ -22,19 +21,18 @@ I primarily tracked my time using wakatime(a vscode extension that tracks time s
 
 # Reflection and Self-Directed Learning
 
-In this section, consider your role, tasks, and responsibilities during the sprint, using the questions from Moodle. Provide relevant links in your response.
-![graph showing time](time-spent-se-1.png)
+I was terrible at estimating timeframes, I still got my work done, but it was certainly suboptimal. My communication skills were also quite terrible, I didn't interject during the meetings nearly as much as I should have.
 
 
-Management of Individual Tasks
+# Management of Individual Tasks
 
-Describe the tasks you have handled according to your SCRUM role during this sprint and evaluate your success in managing these tasks. Utilize the Moodle questions and link to your response.
+We followed SCRUM quite well, our retrospective was insightful, the work distribution was adequate and we laid a good foundation for iterating further.
 
 
+# Communication
 
-Communication
+We did most of our communication on discord and during zoom meetings. It wasn't terrible, but we clearly had a lot of room to improve on its frequency.
 
-Using the Moodle questions, describe how you have communicated with your project team during the sprint. Evaluate the effectiveness of your communication and discuss any efforts you’ve made to improve it. Include relevant links.
 
 [^1]: [Meeting 1 - minutes](https://dev.azure.com/Software-Engineering-2024/Group%204/_wiki/wikis/Group-4.wiki/18/The-1st-meeting-March-22-2024)
 
