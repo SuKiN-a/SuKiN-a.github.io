@@ -1,7 +1,6 @@
 +++
 title = "about"
 path = "about"
-template = "info-page.html"
 +++
 
 Hey there!, I'm parxevicj(sometimes). I like programming. I'm mostly a lurker on the internet, but I do open source some of my code occasionally.

@@ -4,7 +4,7 @@ base_url = "https://www.parxevicj.dev"
 
 compile_sass = true
 default_language = "en"
-generate_feed = true
+generate_feeds = false
 build_search_index = true
 
 [extra]
