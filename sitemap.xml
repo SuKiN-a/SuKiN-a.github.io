@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="https://www.parxevicj.dev/sitemap_style.xsl" type="text/xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.parxevicj.dev/</loc>
+    </url>
+    <url>
+        <loc>https://www.parxevicj.dev/about/</loc>
+    </url>
+    <url>
+        <loc>https://www.parxevicj.dev/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://www.parxevicj.dev/posts/</loc>
+    </url>
+    <url>
+        <loc>https://www.parxevicj.dev/uhhh/</loc>
+    </url>
+</urlset>
